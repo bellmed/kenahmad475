@@ -1,14 +1,14 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import time
 
-hostName = "0.0.0.0"
-serverPort = 8081
+hostName = "127.0.0.1"
+serverPort = 8080
 
 class MyServer(BaseHTTPRequestHandler):
     def do_GET(self):
         self.send_response(200)
         self.end_headers()
-        f = open("name.txt", "r")
+        f = open("backend/name.txt", "r")
         name = f.read()
         self.wfile.write(bytes("Hello " + name, "utf-8"))
 
